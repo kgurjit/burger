@@ -1,0 +1,65 @@
+<div class="row">
+	<div class="col-xs-12 col-md-8 add-form">
+		<form class="add-form" action="burgers/create" method="POST">
+		  <div class="form-group">
+		    <input placeholder="Burger Name" type="text" id="burgerName" name="name">
+		    <button type="submit">Add</button>
+		  </div>
+		</form>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-6 col-md-4">
+		<h3>Waiting to be devoured</h3>
+		{{#if unDevoured.length}}
+			{{#each unDevoured}}
+			    	<p class="burger devoured bg-success">
+			        	{{this.name}} 
+			        	<a href="" class="pull-right form-link" data-frm="#frm_update_{{this.id}}">Devour</a>
+			        	<button type="button" class="pull-right close" aria-label="Close">
+			        		<span class="top-right form-link" data-frm="#frm_del_{{this.id}}" aria-hidden="true">&times;</span>
+			        	</button>
+			        </p>
+			    	<form id="frm_update_{{this.id}}" class="hidden" action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+			          <input type="hidden" name="devoured" value="true">
+			          <button type="submit">SUBMIT</button>
+			        </form>
+			        <form id="frm_del_{{this.id}}" class="hidden" action="burgers/delete/{{this.id}}?_method=DELETE" method="POST">
+			          <input type="hidden" name="devoured" value="true">
+			          <button type="submit">SUBMIT</button>
+			        </form>
+			  {{/each}}
+		  {{else}}
+			  <p class="burger devoured bg-warning">
+			  	Nothing here...
+			  </p>
+		  {{/if}}
+	</div>
+	<div class="col-xs-6 col-md-4">
+		<h3>Devoured</h3>
+		{{#if devoured.length}}
+		  {{#each devoured}}
+		        <p class="burger undevoured bg-info">
+		        	{{this.name}} 
+		        	<a href="" class="pull-right form-link" data-frm="#frm_update_{{this.id}}">Undevour</a>
+		        	<button type="button" class="close" aria-label="Close">
+		        		<span class="top-right form-link" data-frm="#frm_del_{{this.id}}" aria-hidden="true">&times;</span>
+		        	</button>
+		        </p>
+		        <form id="frm_update_{{this.id}}" class="hidden" action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+		          <input type="hidden" name="devoured" value="false">
+		          <button type="submit">submit</button>
+		        </form>
+		        <form id="frm_del_{{this.id}}" class="hidden" action="burgers/delete/{{this.id}}?_method=DELETE" method="POST">
+		          <input type="hidden" name="devoured" value="true">
+		          <button type="submit">SUBMIT</button>
+		        </form>
+		  {{/each}}
+		  {{else}}
+		  	  <p class="burger devoured bg-warning">
+			  	Nothing here...
+			  </p>
+		  {{/if}}
+
+	</div>
+</div>

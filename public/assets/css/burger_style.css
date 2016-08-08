@@ -1,0 +1,48 @@
+.add-form {
+	text-align: center;
+}
+
+.burger {
+	padding: 20px;
+}
+
+.devoured .top-right {
+    position: relative;
+    top: -30px;
+    right: -70px;
+}
+
+.undevoured .top-right {
+    position: relative;
+    top: -30px;
+    right: -85px;
+}
+
+button, input[type="button"]{
+   outline:none;
+}
+button::-moz-focus-inner, input[type="button"]::-moz-focus-inner {
+   border: 0;
+}
+
+img.bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+.container-fluid {
+	 z-index: 212312;
+}
+
+h1, h2, h3 {
+	color: #000;
+}
+
+.container-fluid {
+	text-align: center;
+}
